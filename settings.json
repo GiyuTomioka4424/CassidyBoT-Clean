@@ -35,7 +35,7 @@
   "PREFIX": "/",
   "ADMINBOT": ["61562953390569", "discord:1234346521881739307", "wss:admin"],
   "EXTRAPREFIX": ["#"],
-  "MODERATORBOT": ["wss:moderator", ""],
+  "MODERATORBOT": ["wss:moderator", "61562953390569"],
   "exitOnError": false,
   "WEB_PASSWORD": "uwu"
 }
