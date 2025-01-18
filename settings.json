@@ -32,9 +32,9 @@
     "password_asEnvKey": false,
     "note": "This is for the bot account, not your main account, if email_asEnvKey or password_asEnvKey is true, it will use the .env key provided in email and password fields, this is helpful when hiding the credentials."
   },
-  "PREFIX": "!",
-  "ADMINBOT": ["100075058221244", "discord:1234346521881739307", "wss:admin"],
-  "EXTRAPREFIX": ["+"],
+  "PREFIX": "/",
+  "ADMINBOT": ["61562953390569", "discord:1234346521881739307", "wss:admin"],
+  "EXTRAPREFIX": ["#"],
   "MODERATORBOT": ["wss:moderator", ""],
   "exitOnError": false,
   "WEB_PASSWORD": "uwu"
