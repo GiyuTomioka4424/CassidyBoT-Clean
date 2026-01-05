@@ -192,7 +192,7 @@ export async function entry({
     );
   } else {
     output.reply(
-      `${targetName} have $${pCy(playerMoney.money)}💵 in the cassidy chatbot system.${warn}\n\n${topText}`,
+      `${targetName} have $${pCy(playerMoney.money)}💵 in the macky chatbot system.${warn}\n\n${topText}`,
     );
   }
 }
