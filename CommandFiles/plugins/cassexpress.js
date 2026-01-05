@@ -1,15 +1,15 @@
 export const meta = {
-  name: "cassexpress",
-  author: "Liane Cagara",
+  name: "mackyexpress",
+  author: "saitan",
   version: "1.0.0",
-  description: "Logic for cass express..?",
+  description: "Logic for macky express..?",
   supported: "^1.0.0",
   order: 1,
   type: "plugin",
 };
 
 const logo = `✪ 𝖯𝗈𝗐𝖾𝗋𝖾𝖽 𝖡𝗒
-✦ 𝗖𝗮𝘀𝘀𝗘𝘅𝗽𝗿𝗲𝘀𝘀`;
+✦ 𝗠𝗮𝗰𝗸𝘆𝗘𝘅𝗽𝗿𝗲𝘀𝘀`;
 
 const { parseCurrency: pCy } = global.utils;
 
@@ -19,45 +19,8 @@ import { number } from "mathjs";
 const g4f = new G4F();
 
 /*
-  name: 
-    - The name assigned to the AI.
-    - Default value: "DefaultAI".
-    - Example: "ChatGPT", "CustomAssistant".
-
-  behavior: 
-    - Defines the overall behavior or disposition of the AI.
-    - Default value: "Neutral".
-    - Example: "Friendly", "Sarcastic".
-
-  languages: 
-    - An array of languages the AI can use for communication.
-    - Default value: ["English"].
-    - Example: ["English", "Spanish", "French"].
-
-  personality: 
-    - Describes the AI's personality traits.
-    - Default value: "Neutral".
-    - Example: "Cheerful", "Professional".
-
-  tone: 
-    - The tone in which the AI communicates.
-    - Default value: "Formal".
-    - Example: "Casual", "Serious".
-
-  expertise: 
-    - The domain or area of expertise of the AI.
-    - Default value: "General".
-    - Example: "Technology", "Healthcare".
-
-  constraints: 
-    - An array of constraints or rules the AI must follow.
-    - Default value: an empty array [].
-    - Example: ["No political discussions", "Avoid technical jargon"].
-
-  style: 
-    - The style of communication preferred for the AI.
-    - Default value: "Standard".
-    - Example: "Conversational", "Detailed".
+  Credits: saitan
+  Project: mackyexpress
 */
 
 class CustomAI {
@@ -128,13 +91,13 @@ class CustomAI {
   }
 }
 
-class CassExpress {
-  constructor(cassExpress) {
-    this.cassExpress = JSON.parse(JSON.stringify(cassExpress));
-    this.cassExpress.mailList = (this.cassExpress.mailList || []).filter(
+class MackyExpress {
+  constructor(mackyExpress) {
+    this.mackyExpress = JSON.parse(JSON.stringify(mackyExpress));
+    this.mackyExpress.mailList = (this.mackyExpress.mailList || []).filter(
       Boolean,
     );
-    this.cassExpress.bankLogs = (this.cassExpress.bankLogs || []).filter(
+    this.mackyExpress.bankLogs = (this.mackyExpress.bankLogs || []).filter(
       Boolean,
     );
   }
@@ -147,38 +110,29 @@ class CassExpress {
     }, 0);
   }
   static farmMultiplier(obj) {
-    const acc = CassExpress.reduceObj(obj);
+    const acc = MackyExpress.reduceObj(obj);
     return acc / 1000;
-  
   }
   static farmUP(price, obj) {
-    const m = CassExpress.farmMultiplier(obj);
+    const m = MackyExpress.farmMultiplier(obj);
     return Math.round(price + (price * m));
   }
 
   static parseAbbrIng(str) {
-    return parseInt(CassExpress.parseAbbr(str));
+    return parseInt(MackyExpress.parseAbbr(str));
   }
   static parseAbbr(str) {
     const multipliers = {
-      K: 1e3,
-      k: 1e3,
-      M: 1e6,
-      m: 1e6,
-      B: 1e9,
-      b: 1e9,
-      T: 1e12,
-      t: 1e12,
-      Q: 1e15,
-      q: 1e15,
-      S: 1e18,
-      s: 1e18,
-      N: 1e21,
-      n: 1e21,
+      K: 1e3, k: 1e3,
+      M: 1e6, m: 1e6,
+      B: 1e9, b: 1e9,
+      T: 1e12, t: 1e12,
+      Q: 1e15, q: 1e15,
+      S: 1e18, s: 1e18,
+      N: 1e21, n: 1e21,
     };
 
     const regex = /^([\d,.]+)\s*([KkMmBbTtQqSsNn]?)$/;
-
     const match = str.match(regex);
 
     if (match) {
@@ -198,15 +152,15 @@ class CassExpress {
   }
 
   raw() {
-    return JSON.parse(JSON.stringify(this.cassExpress));
+    return JSON.parse(JSON.stringify(this.mackyExpress));
   }
 
   clone() {
-    return new CassExpress(this.raw());
+    return new MackyExpress(this.raw());
   }
 
   getBankLogs() {
-    return this.cassExpress.bankLogs;
+    return this.mackyExpress.bankLogs;
   }
 
   stringBankLogs() {
@@ -214,7 +168,7 @@ class CassExpress {
       if (!log) return "";
 
       const formattedAmount = `$**${pCy(parseInt(log.amount))}**💵`;
-      const formattedDate = CassExpress.formatDate(log.timeStamp);
+      const formattedDate = MackyExpress.formatDate(log.timeStamp);
 
       switch (log.type) {
         case "in":
@@ -249,15 +203,15 @@ class CassExpress {
   }
 
   getMailList() {
-    return this.cassExpress.mailList;
+    return this.mackyExpress.mailList;
   }
 
   static stringMail(mail) {
-    return `💌 **${mail.title}** ${CassExpress.formatDate(mail.timeStamp)}\n\n${mail.body}\n\n${logo}`;
+    return `💌 **${mail.title}** ${MackyExpress.formatDate(mail.timeStamp)}\n\n${mail.body}\n\n${logo}`;
   }
 
   stringMailList() {
-    return this.getMailList().map(CassExpress.stringMail);
+    return this.getMailList().map(MackyExpress.stringMail);
   }
 
   setMailReceived({ name, uid, amount, author }) {
@@ -329,8 +283,9 @@ class CassExpress {
     return formattedDate.replace(/\//g, "/") + " " + formattedTime;
   }
 }
+
 export async function use(obj) {
-  obj.CassExpress = CassExpress;
+  obj.MackyExpress = MackyExpress;
   obj.CustomAI = CustomAI;
   obj.g4f = g4f;
   obj.next();
